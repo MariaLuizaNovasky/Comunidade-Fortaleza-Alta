@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fundo: #f6f7f5;
+    --superficie: #ffffff;
+    --borda: #e3e7e2;
+    --texto: #0d1f1a;
+    --texto-suave: #5b6b64;
+    color-scheme: light;
+  }
+
+  [data-tema='escuro'] {
+    --fundo: #071511;
+    --superficie: #0e211b;
+    --borda: #1d3a30;
+    --texto: #e7f1ec;
+    --texto-suave: #92a79e;
+    color-scheme: dark;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  /* Respeita a área segura de aparelhos com entalhe */
+  .area-segura-baixo {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .area-segura-topo {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  :focus-visible {
+    outline: 2px solid #2a8068;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--borda);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .superficie {
+    background-color: var(--superficie);
+    border-color: var(--borda);
+  }
+
+  .texto-suave {
+    color: var(--texto-suave);
+  }
+
+  .cartao {
+    @apply superficie min-w-0 rounded-2xl border shadow-cartao;
+  }
+
+  .rotulo {
+    @apply mb-1.5 block text-sm font-medium;
+  }
+
+  .campo {
+    @apply superficie w-full rounded-xl border px-3.5 py-2.5 text-[15px] outline-none
+           transition placeholder:text-slate-400
+           focus:border-mata-500 focus:ring-4 focus:ring-mata-500/15
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .selo {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1
+           text-xs font-semibold ring-1 ring-inset;
+  }
+
+  .link-nav {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium
+           transition hover:bg-mata-500/10;
+  }
+
+  .link-nav-ativo {
+    @apply bg-mata-700 text-white hover:bg-mata-700;
+  }
+}
+
+@media print {
+  .sem-impressao {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Tokens dos gráficos.
+   A paleta de situações foi validada com o verificador de contraste
+   e de daltonismo nos dois modos (claro e escuro).
+   --------------------------------------------------------------- */
+@layer base {
+  .viz {
+    --viz-superficie: #ffffff;
+    --viz-tinta: #0d1f1a;
+    --viz-tinta-suave: #5b6b64;
+    --viz-grade: #e3e7e2;
+    --viz-serie: #115e4a;
+    --viz-serie-fraca: #a7d8c5;
+
+    --viz-aberta: #2a78d6;
+    --viz-analise: #eb6834;
+    --viz-andamento: #1baf7a;
+    --viz-aguardando: #eda100;
+    --viz-concluida: #e87ba4;
+    --viz-cancelada: #008300;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-tema='claro']) .viz {
+      --viz-superficie: #0e211b;
+      --viz-tinta: #e7f1ec;
+      --viz-tinta-suave: #92a79e;
+      --viz-grade: #1d3a30;
+      --viz-serie: #459d83;
+      --viz-serie-fraca: #1d3a30;
+
+      --viz-aberta: #3987e5;
+      --viz-analise: #d95926;
+      --viz-andamento: #199e70;
+      --viz-aguardando: #c98500;
+      --viz-concluida: #d55181;
+      --viz-cancelada: #0ca30c;
+    }
+  }
+
+  :root[data-tema='escuro'] .viz {
+    --viz-superficie: #0e211b;
+    --viz-tinta: #e7f1ec;
+    --viz-tinta-suave: #92a79e;
+    --viz-grade: #1d3a30;
+    --viz-serie: #459d83;
+    --viz-serie-fraca: #1d3a30;
+
+    --viz-aberta: #3987e5;
+    --viz-analise: #d95926;
+    --viz-andamento: #199e70;
+    --viz-aguardando: #c98500;
+    --viz-concluida: #d55181;
+    --viz-cancelada: #0ca30c;
+  }
+}

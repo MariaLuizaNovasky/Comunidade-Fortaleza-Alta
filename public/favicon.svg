@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Fortaleza Alta">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d6753"/>
+      <stop offset="1" stop-color="#0a3328"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#fundo)"/>
+  <!-- morro -->
+  <path d="M34 398c58-10 96-44 128-82 26-31 46-48 70-48s44 17 70 48c32 38 70 72 128 82v34H34z"
+        fill="#2a8068" opacity=".55"/>
+  <!-- torre esquerda -->
+  <path d="M150 232h54v150h-54z" fill="#edf7f3"/>
+  <path d="M150 232v-30h13v16h14v-16h13v16h14v-16h13v30z" fill="#edf7f3"/>
+  <!-- torre direita -->
+  <path d="M308 232h54v150h-54z" fill="#edf7f3"/>
+  <path d="M308 232v-30h13v16h14v-16h13v16h14v-16h13v30z" fill="#edf7f3"/>
+  <!-- corpo central -->
+  <path d="M204 276h104v106H204z" fill="#edf7f3"/>
+  <path d="M204 276v-28h13v15h13v-15h13v15h13v-15h13v15h13v-15h13v15h13v-15h13v28z" fill="#edf7f3"/>
+  <!-- portao -->
+  <path d="M232 382v-56a24 24 0 0 1 48 0v56z" fill="#115e4a"/>
+  <!-- janelas das torres -->
+  <rect x="166" y="268" width="22" height="30" rx="11" fill="#115e4a"/>
+  <rect x="324" y="268" width="22" height="30" rx="11" fill="#115e4a"/>
+  <!-- base -->
+  <rect x="132" y="382" width="248" height="22" rx="8" fill="#edf7f3"/>
+  <!-- bandeira -->
+  <path d="M256 196v-52" stroke="#dfa036" stroke-width="10" stroke-linecap="round"/>
+  <path d="M261 148h52l-16 18 16 18h-52z" fill="#dfa036"/>
+</svg>
