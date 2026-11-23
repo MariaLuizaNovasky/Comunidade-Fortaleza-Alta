@@ -64,6 +64,12 @@ O workflow `.github/workflows/deploy.yml` publica o site a cada push na branch `
 2. Faça um push na `main`. O endereço será `https://<usuario>.github.io/<repositorio>/`.
 3. No Supabase: **Authentication → URL Configuration**, coloque esse endereço em **Site URL** e em **Redirect URLs**. Sem isso, os links de confirmação de e-mail e de recuperação de senha apontam para `localhost`.
 
+## Publicação (Vercel)
+
+O arquivo `vercel.json` já traz a configuração necessária: importe o repositório no Vercel e mantenha o preset **Vite**. A regra de `rewrites` faz as rotas do aplicativo (`/solicitacoes`, `/servicos`…) abrirem o `index.html`; sem ela o Vercel devolve 404 ao recarregar a página ou abrir um link direto.
+
+Lembre-se de incluir o endereço do Vercel também em **Redirect URLs** no Supabase.
+
 ## Banco de dados
 
 As migrações ficam em `supabase/migrations/` e já estão aplicadas no projeto Supabase.
