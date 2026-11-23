@@ -39,6 +39,12 @@ export function mensagemErro(erro: unknown): string {
     'Failed to fetch': 'Sem conexão com o servidor. Verifique sua internet.',
     'Email rate limit exceeded':
       'Muitas tentativas em pouco tempo. Tente novamente mais tarde.',
+    // O Supabase esconde o motivo real das falhas do banco ao criar a conta.
+    // No cadastro, a única restrição que pode falhar é o CPF repetido.
+    'Database error saving new user':
+      'Este CPF já está cadastrado. Se você já tem conta, use a aba “Já sou cadastrado” ou “Esqueci minha senha”.',
+    'One-time token not found':
+      'O link do e-mail expirou ou já foi usado. Entre com seu e-mail e senha ou peça um novo link.',
   }
 
   for (const [chaveErro, traducao] of Object.entries(mapa)) {
