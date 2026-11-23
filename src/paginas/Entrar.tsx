@@ -41,10 +41,22 @@ export default function Entrar() {
   const definir = (campo: keyof typeof form, valor: string) =>
     setForm((f) => ({ ...f, [campo]: valor }))
 
-  // Link de redefinição de senha enviado por e-mail
+  // Links enviados por e-mail (confirmação de cadastro e redefinição de senha)
   useEffect(() => {
     const hash = window.location.hash
     if (hash.includes('type=recovery')) setRedefinindo(true)
+
+    // Link vencido ou já usado: o Supabase devolve o erro no endereço
+    const parametros = new URLSearchParams(hash.replace(/^#/, ''))
+    if (parametros.get('error')) {
+      aviso.erro(
+        parametros.get('error_code') === 'otp_expired'
+          ? 'O link do e-mail expirou ou já foi usado. Entre com seu e-mail e senha ou peça um novo link.'
+          : 'Não foi possível validar o link do e-mail. Tente entrar com seu e-mail e senha.',
+      )
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (sessao && !redefinindo) {

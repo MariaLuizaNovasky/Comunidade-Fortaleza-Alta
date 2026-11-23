@@ -17,7 +17,10 @@ export function RotaProtegida({
 
   if (carregando) return <Carregando texto="Verificando seu acesso…" />
 
-  if (!sessao) return <Navigate to="/entrar" state={{ de: local.pathname }} replace />
+  if (!sessao) {
+    // Mantém o trecho após o # (erros e tokens vindos dos links de e-mail)
+    return <Navigate to={{ pathname: '/entrar', hash: local.hash }} state={{ de: local.pathname }} replace />
+  }
 
   if (perfil && !perfil.ativo) {
     return (
