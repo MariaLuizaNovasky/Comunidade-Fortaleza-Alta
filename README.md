@@ -70,6 +70,13 @@ O arquivo `vercel.json` já traz a configuração necessária: importe o reposit
 
 Lembre-se de incluir o endereço do Vercel também em **Redirect URLs** no Supabase.
 
+## E-mails de cadastro (limite do Supabase)
+
+O servidor de e-mail que vem com o Supabase envia **poucos e-mails por hora** (apenas para testes). Passando disso, cadastros e recuperações de senha falham com "limite de e-mails atingido". Há duas saídas, ambas no painel do Supabase:
+
+- **Desligar a confirmação de e-mail:** *Authentication → Sign In / Providers → Email → Confirm email* (desligado). O cadastro deixa de enviar e-mail; a recuperação de senha continua enviando.
+- **Usar um servidor de e-mail próprio (SMTP):** *Authentication → Emails → SMTP Settings* (por exemplo Resend, Brevo ou Gmail com senha de app) e, depois, aumentar o limite em *Authentication → Rate Limits*.
+
 ## Banco de dados
 
 As migrações ficam em `supabase/migrations/` e já estão aplicadas no projeto Supabase.
